@@ -20,11 +20,11 @@ namespace EjercicioPrueba
             {
                 var attack = character.Attack();
                 var defenseEnemy = enemy.Defense();
-                enemy.ReceiveDamage(attack - defenseEnemy);
+                enemy.ReceiveDamage(DamageCalculator(attack, defenseEnemy));
 
                 var attackEnemy = enemy.Attack();
                 var defense = character.Defense();
-                character.ReceiveDamage(attackEnemy - defense);
+                character.ReceiveDamage(DamageCalculator(attackEnemy, defense));
 
                 if (character.CurrentHp == 0)
                 {
@@ -45,22 +45,33 @@ namespace EjercicioPrueba
             }
             
         }
+        
+        
+        static int DamageCalculator(int attacker, int defender) 
+        {
+            if (attacker >= defender)
+            {
+                return attacker - defender;
+            }
+
+            return 0;
+        }
 
 
         static List<ITem> LootGenerator()
         {
             var loot = new List<ITem>
             {
-                new Helmet("Shield of Valor", 100,  0.05),
+                new Shield("Shield of Valor", 100,  0.05),
                 new Helmet("Helmet of Insight", 50,  0.1),
-                new Helmet("Chestplate of Fortitude", 150, 0.02),
+                new Shield("Chestplate of Fortitude", 150, 0.02),
                 new Helmet("Gauntlets of Dexterity",40, 0.12),
-                new Helmet("Boots of Swiftness", 30, 0.15),
+                new Boots("Boots of Swiftness", 30, 0.15),
                 new Sword("Sword of Dawn", 50,  0.2, 100),
                 new Axe("Axe of Fury", 60, 0.15, 120 ),
                 new Sword("Claymore", 40, 0.25, 90),
                 new Sword("Dagger of Silence", 30, 0.3, 80),
-                new Sword("Hammer of Thunder", 70, 0.1, 150)
+                new Hammer("Hammer of Thunder", 70, 0.1, 150)
             };
 
             return loot;
