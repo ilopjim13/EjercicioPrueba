@@ -1,0 +1,15 @@
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\bin\Debug\net8.0\EjercicioPrueba.exe
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\bin\Debug\net8.0\EjercicioPrueba.deps.json
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\bin\Debug\net8.0\EjercicioPrueba.runtimeconfig.json
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\bin\Debug\net8.0\EjercicioPrueba.dll
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\bin\Debug\net8.0\EjercicioPrueba.pdb
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\obj\Debug\net8.0\EjercicioPrueba.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\obj\Debug\net8.0\EjercicioPrueba.AssemblyInfoInputs.cache
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\obj\Debug\net8.0\EjercicioPrueba.AssemblyInfo.cs
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\obj\Debug\net8.0\EjercicioPrueba.csproj.CoreCompileInputs.cache
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\obj\Debug\net8.0\EjercicioPrueba.sourcelink.json
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\obj\Debug\net8.0\EjercicioPrueba.dll
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\obj\Debug\net8.0\refint\EjercicioPrueba.dll
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\obj\Debug\net8.0\EjercicioPrueba.pdb
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\obj\Debug\net8.0\EjercicioPrueba.genruntimeconfig.cache
+C:\Users\ivan\RiderProjects\EjercicioPrueba\EjercicioPrueba\obj\Debug\net8.0\ref\EjercicioPrueba.dll

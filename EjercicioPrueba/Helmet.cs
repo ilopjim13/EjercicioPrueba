@@ -2,7 +2,7 @@
 
 public class Helmet :Protection
 {
-    public Helmet(string name, int armor) : base(name, armor)
+    public Helmet(string name, int armor, double evasionRate) : base(name, armor, evasionRate)
     {
     }
 }
