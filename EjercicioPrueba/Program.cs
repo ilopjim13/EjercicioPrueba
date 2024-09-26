@@ -6,13 +6,16 @@ namespace EjercicioPrueba
     {
         static void Main()
         {
-            Weapon sword = new Sword("Steel Fang", 15, 0.06, 5);
-            var character = new Character("Ronan", 150, 10, 20, [sword]);
+            Weapon sword = new Sword("Steel Fang", 25, 0.06, 5);
+            Protection shield = new Shield("Shield", 10, 0.06);
+            var character = new Character("Ronan", 150, 10, 20, [sword, shield]);
             var loot = LootGenerator();
             
-            var enemy = new Character("Goblin", 30, 50, 10, []);
+            var enemy = new Character("Goblin", 30, 50, 10, [shield]);
             
             sword.Equip(character);
+            shield.Equip(character);
+            shield.Equip(enemy);
 
             var combat = true;
             Console.WriteLine("You've run into a goblin, the fight begins!");
@@ -20,11 +23,17 @@ namespace EjercicioPrueba
             {
                 var attack = character.Attack();
                 var defenseEnemy = enemy.Defense();
-                enemy.ReceiveDamage(DamageCalculator(attack, defenseEnemy));
+                if (enemy.ReceiveDamage(DamageCalculator(attack, defenseEnemy)))
+                {
+                    Console.WriteLine("You have missed the attack!!");
+                }
 
                 var attackEnemy = enemy.Attack();
                 var defense = character.Defense();
-                character.ReceiveDamage(DamageCalculator(attackEnemy, defense));
+                if (character.ReceiveDamage(DamageCalculator(attackEnemy, defense)))
+                {
+                    Console.WriteLine("You have dodged the attack!!");
+                }
 
                 if (character.CurrentHp == 0)
                 {

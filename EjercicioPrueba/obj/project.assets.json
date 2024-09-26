@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\UsuarioT\\.nuget\\packages\\": {}
+    "C:\\Users\\ivan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\UsuarioT\\RiderProjects\\EjercicioPrueba\\EjercicioPrueba\\EjercicioPrueba.csproj",
+      "projectUniqueName": "C:\\Users\\ivan\\RiderProjects\\EjercicioPrueba\\EjercicioPrueba\\EjercicioPrueba.csproj",
       "projectName": "EjercicioPrueba",
-      "projectPath": "C:\\Users\\UsuarioT\\RiderProjects\\EjercicioPrueba\\EjercicioPrueba\\EjercicioPrueba.csproj",
-      "packagesPath": "C:\\Users\\UsuarioT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\UsuarioT\\RiderProjects\\EjercicioPrueba\\EjercicioPrueba\\obj\\",
+      "projectPath": "C:\\Users\\ivan\\RiderProjects\\EjercicioPrueba\\EjercicioPrueba\\EjercicioPrueba.csproj",
+      "packagesPath": "C:\\Users\\ivan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ivan\\RiderProjects\\EjercicioPrueba\\EjercicioPrueba\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\UsuarioT\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ivan\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

@@ -31,7 +31,6 @@ public class Character
         
         if (WeaponEquip != null && rate < WeaponEquip.CriticalRate) 
         {
-            Console.WriteLine("Critical attack!!");
             return BaseDamage + WeaponEquip.CriticalDamage;
         }
         
@@ -48,37 +47,34 @@ public class Character
         if (CurrentHp + heal <= MaxHp)
         {
             CurrentHp += heal;
-            Console.WriteLine($"Healed {heal}");
         }
         else
         {
-            Console.WriteLine($"Healed {MaxHp - CurrentHp}");
             CurrentHp = MaxHp;
         }
         
     }
 
-    public void ReceiveDamage(int damage)
+    public bool ReceiveDamage(int damage)
     {
         var random = new Random();
         var rate = random.NextDouble();
 
         if (ProtectionEquip != null && rate < ProtectionEquip.EvasionRate)
         {
-            Console.WriteLine("The attack has been dodged!!");
+            return true;
         }
+        if (CurrentHp - damage >= 0) 
+        {
+            CurrentHp -= damage;
+        }
+             
         else
         {
-            if (CurrentHp - damage >= 0) 
-            {
-                CurrentHp -= damage;
-            }
-                
-            else
-            {
-                CurrentHp = 0;
-            }
+            CurrentHp = 0;
         }
+        
+        return false;
 
         
         
