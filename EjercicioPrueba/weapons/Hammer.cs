@@ -1,4 +1,4 @@
-﻿namespace EjercicioPrueba;
+﻿namespace EjercicioPrueba.weapons;
 
 public class Hammer : Weapon
 {

@@ -1,18 +1,34 @@
-﻿namespace EjercicioPrueba;
+﻿using EjercicioPrueba.interfaces;
+using EjercicioPrueba.pets;
+using EjercicioPrueba.protections;
+using EjercicioPrueba.weapons;
+
+namespace EjercicioPrueba.character;
 
 public class Character
 {
     
-    public string Name { get; set; }
-    public int MaxHp { get; set; }
-    public int CurrentHp { get; set; }
+    public string Name { get; }
+    private int MaxHp { get; }
+    public int CurrentHp { get; private set; }
     public int BaseDamage { get; set; }
+    public double Evasion { get; set; }
     
     public Weapon? WeaponEquip { get; set; }
+    public ITem? HandRight { get; set; }
+    public ITem? HandLeft { get; set; }
+    
     
     public Protection? ProtectionEquip { get; set; }
+    public Protection? Helmet { get; set; }
+    public Protection? BodyArmor { get; set; }
+    public Protection? Gauntlets { get; set; }
+    public Protection? Pants { get; set; }
+    public Protection? Boots { get; set; }
+    
     public int BaseArmor { get; set; }
-    public List<ITem> Inventory { get; set; }
+    public Pet? Pet { get; set; }
+    public List<ITem> Inventory { get; }
 
     public Character(string name, int maxHp, int baseDamage, int baseArmor, List<ITem> inventory)
     {

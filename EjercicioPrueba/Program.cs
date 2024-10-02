@@ -1,27 +1,36 @@
-﻿
+﻿using EjercicioPrueba.interfaces;
+using EjercicioPrueba.character;
+using EjercicioPrueba.protections;
+using EjercicioPrueba.weapons;
+
 
 namespace EjercicioPrueba
 {
-    class Program
+    internal abstract class Program
     {
-        static void Main()
+        private static void Main()
         {
             Weapon sword = new Sword("Steel Fang", 25, 0.06, 5);
-            Protection shield = new Shield("Shield", 10, 0.06);
-            var character = new Character("Ronan", 150, 10, 20, [sword, shield]);
+            Protection helmet = new Helmet("Helmet", 10, 0.06, true);
+            var character = new Character("Ronan", 150, 10, 20, [sword, helmet]);
             var loot = LootGenerator();
             
-            var enemy = new Character("Goblin", 30, 50, 10, [shield]);
+            var enemy = new Character("Goblin", 30, 50, 10, []);
             
             sword.Equip(character);
-            shield.Equip(character);
-            shield.Equip(enemy);
+            helmet.Equip(character);
 
             var combat = true;
             Console.WriteLine("You've run into a goblin, the fight begins!");
             while (combat)
             {
                 var attack = character.Attack();
+                if (character.Pet != null)
+                {
+                    var petAttack = character.Pet.Attack();
+                    attack += petAttack;
+                    Console.WriteLine($"Your pet {character.Pet.Name} has attacked");
+                }
                 var defenseEnemy = enemy.Defense();
                 if (enemy.ReceiveDamage(DamageCalculator(attack, defenseEnemy)))
                 {
@@ -44,9 +53,9 @@ namespace EjercicioPrueba
                     Console.WriteLine("You Win!!");
                     combat = false;
                     var index = new Random().Next(loot.Count);
-                    var randomLoot = loot[index]; ;
+                    var randomLoot = loot[index];
                     Console.WriteLine("The enemy has dropped an item");
-                    randomLoot.Apply(character);
+                    randomLoot.AddItem(character);
                     randomLoot.Equip(character);
                     character.Heal(100);
                 }
@@ -56,7 +65,7 @@ namespace EjercicioPrueba
         }
         
         
-        static int DamageCalculator(int attacker, int defender) 
+        private static int DamageCalculator(int attacker, int defender) 
         {
             if (attacker >= defender)
             {
@@ -67,19 +76,19 @@ namespace EjercicioPrueba
         }
 
 
-        static List<ITem> LootGenerator()
+        private static List<ITem> LootGenerator()
         {
             var loot = new List<ITem>
             {
                 new Shield("Shield of Valor", 100,  0.05),
-                new Helmet("Helmet of Insight", 50,  0.1),
-                new Shield("Chestplate of Fortitude", 150, 0.02),
-                new Helmet("Gauntlets of Dexterity",40, 0.12),
+                new Helmet("Helmet of Insight", 50,  0.1, false),
+                new BodyArmor("Chestplate of Fortitude", 150, 0.02),
+                new Gauntlets("Gauntlets of Dexterity",40, 0.12),
                 new Boots("Boots of Swiftness", 30, 0.15),
                 new Sword("Sword of Dawn", 50,  0.2, 100),
                 new Axe("Axe of Fury", 60, 0.15, 120 ),
                 new Sword("Claymore", 40, 0.25, 90),
-                new Sword("Dagger of Silence", 30, 0.3, 80),
+                new Dagger("Dagger of Silence", 30, 0.3, 80),
                 new Hammer("Hammer of Thunder", 70, 0.1, 150)
             };
 

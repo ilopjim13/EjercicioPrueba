@@ -1,4 +1,7 @@
-﻿namespace EjercicioPrueba;
+﻿using EjercicioPrueba.character;
+using EjercicioPrueba.interfaces;
+
+namespace EjercicioPrueba.weapons;
 
 public abstract class Weapon: ITem
 {
@@ -21,6 +24,16 @@ public abstract class Weapon: ITem
     
     public void Apply(Character character)
     {
+        character.BaseDamage += Damage;
+    }
+    
+    public void UnApply(Character character)
+    {
+        character.BaseDamage -= Damage;
+    }
+    
+    public void AddItem(Character character)
+    {
         if (character.Inventory.Contains(this))
         {
             Console.WriteLine("This weapon is already in your inventory!");
@@ -38,10 +51,10 @@ public abstract class Weapon: ITem
         {
             if (character.WeaponEquip.Damage < Damage)
             {
-                character.WeaponEquip.Unequip(character);
+                character.WeaponEquip.UnEquip(character);
                 character.WeaponEquip = this;
                 Console.WriteLine($"{Name} is now equipped.");
-                character.BaseDamage += Damage;
+                Apply(character);
             }
             else
             {
@@ -52,16 +65,16 @@ public abstract class Weapon: ITem
         {
             character.WeaponEquip = this;
             Console.WriteLine($"{Name} is now equipped.");
-            character.BaseDamage += Damage;
+            Apply(character);
         }
     }
 
-    public void Unequip(Character character)
+    public void UnEquip(Character character)
     {
         if (character.WeaponEquip != null)
         {
             character.WeaponEquip = null;
-            character.BaseDamage -= Damage;
+            UnApply(character);
             Console.WriteLine($"{Name} is now unequipped.");
         }
         else
