@@ -1,5 +1,9 @@
-﻿using EjercicioPrueba.interfaces;
+﻿using EjercicioPrueba.effects;
+using EjercicioPrueba.equip;
+using EjercicioPrueba.interfaces;
+using EjercicioPrueba.perks;
 using EjercicioPrueba.pets;
+using EjercicioPrueba.potions;
 using EjercicioPrueba.protections;
 using EjercicioPrueba.weapons;
 
@@ -9,34 +13,21 @@ public class Character
 {
     
     public string Name { get; }
-    private int MaxHp { get; }
-    public int CurrentHp { get; private set; }
-    public int BaseDamage { get; set; }
-    public double Evasion { get; set; }
-    
-    public Weapon? WeaponEquip { get; set; }
-    public ITem? HandRight { get; set; }
-    public ITem? HandLeft { get; set; }
-    
-    
-    public Protection? ProtectionEquip { get; set; }
-    public Protection? Helmet { get; set; }
-    public Protection? BodyArmor { get; set; }
-    public Protection? Gauntlets { get; set; }
-    public Protection? Pants { get; set; }
-    public Protection? Boots { get; set; }
-    
-    public int BaseArmor { get; set; }
+    public Perks Perks { get; }
+    public Equip Equip { get; }
     public Pet? Pet { get; set; }
     public List<ITem> Inventory { get; }
+    public List<Potion> Potions { get; }
+    
+    public Weapon? WeaponEquip { get; set; }
+    public Protection? ProtectionEquip { get; set; }
+    
 
     public Character(string name, int maxHp, int baseDamage, int baseArmor, List<ITem> inventory)
     {
         Name = name;
-        MaxHp = maxHp;
-        CurrentHp = MaxHp;
-        BaseDamage = baseDamage;
-        BaseArmor = baseArmor;
+        Perks = new Perks(maxHp,baseDamage, baseArmor);
+        Equip = new Equip(null, null, null, null, null, null, null);
         Inventory = inventory;
     }
     
@@ -47,26 +38,26 @@ public class Character
         
         if (WeaponEquip != null && rate < WeaponEquip.CriticalRate) 
         {
-            return BaseDamage + WeaponEquip.CriticalDamage;
+            return Perks.BaseDamage + WeaponEquip.CriticalDamage;
         }
         
-        return BaseDamage;
+        return Perks.BaseDamage;
     }
     
     public int Defense()
     {
-        return BaseArmor;
+        return Perks.BaseArmor;
     }
 
     public void Heal(int heal)
     {
-        if (CurrentHp + heal <= MaxHp)
+        if (Perks.CurrentHp + heal <= Perks.MaxHp)
         {
-            CurrentHp += heal;
+            Perks.CurrentHp += heal;
         }
         else
         {
-            CurrentHp = MaxHp;
+            Perks.CurrentHp = Perks.MaxHp;
         }
         
     }
@@ -80,19 +71,24 @@ public class Character
         {
             return true;
         }
-        if (CurrentHp - damage >= 0) 
+        if (Perks.CurrentHp - damage >= 0) 
         {
-            CurrentHp -= damage;
+            Perks.CurrentHp -= damage;
         }
              
         else
         {
-            CurrentHp = 0;
+            Perks.CurrentHp = 0;
         }
         
         return false;
+    }
 
-        
-        
+    public void Buff(Effect effect, ITem item)
+    {
+        if (item is Potion)
+        {
+            item.Apply(this);
+        }
     }
 }

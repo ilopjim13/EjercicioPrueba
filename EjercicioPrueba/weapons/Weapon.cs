@@ -3,7 +3,7 @@ using EjercicioPrueba.interfaces;
 
 namespace EjercicioPrueba.weapons;
 
-public abstract class Weapon: ITem
+public abstract class Weapon: IEquippable
 {
 
     public string Name { get; set; }
@@ -24,12 +24,12 @@ public abstract class Weapon: ITem
     
     public void Apply(Character character)
     {
-        character.BaseDamage += Damage;
+        character.Perks.BaseDamage += Damage;
     }
     
     public void UnApply(Character character)
     {
-        character.BaseDamage -= Damage;
+        character.Perks.BaseDamage -= Damage;
     }
     
     public void AddItem(Character character)

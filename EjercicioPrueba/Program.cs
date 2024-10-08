@@ -44,11 +44,11 @@ namespace EjercicioPrueba
                     Console.WriteLine("You have dodged the attack!!");
                 }
 
-                if (character.CurrentHp == 0)
+                if (character.Perks.CurrentHp == 0)
                 {
                     Console.WriteLine("You lose!!");
                     combat = false;
-                } else if (enemy.CurrentHp == 0)
+                } else if (enemy.Perks.CurrentHp == 0)
                 {
                     Console.WriteLine("You Win!!");
                     combat = false;
@@ -76,9 +76,9 @@ namespace EjercicioPrueba
         }
 
 
-        private static List<ITem> LootGenerator()
+        private static List<IEquippable> LootGenerator()
         {
-            var loot = new List<ITem>
+            var loot = new List<IEquippable>
             {
                 new Shield("Shield of Valor", 100,  0.05),
                 new Helmet("Helmet of Insight", 50,  0.1, false),

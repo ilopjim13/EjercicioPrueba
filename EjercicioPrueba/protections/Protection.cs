@@ -3,7 +3,7 @@ using EjercicioPrueba.interfaces;
 
 namespace EjercicioPrueba.protections;
 
-public abstract class Protection: ITem
+public abstract class Protection: IEquippable
 {
     
     public string Name { get; set; }
@@ -19,14 +19,14 @@ public abstract class Protection: ITem
     
     public virtual void Apply(Character character)
     {
-        character.BaseArmor += Armor;
-        character.Evasion += EvasionRate;
+        character.Perks.BaseArmor += Armor;
+        character.Perks.Evasion += EvasionRate;
     }
 
     public void UnApply(Character character)
     {
-        character.BaseArmor -= Armor;
-        character.Evasion -= EvasionRate;
+        character.Perks.BaseArmor -= Armor;
+        character.Perks.Evasion -= EvasionRate;
     }
     
     

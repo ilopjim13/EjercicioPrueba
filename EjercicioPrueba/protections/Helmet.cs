@@ -23,16 +23,16 @@ public class Helmet :Protection
 
     protected override void AddEquipment(Character character)
     {
-        character.Helmet = this;
+        character.Equip.Helmet = this;
     }
 
     protected override void QuitEquipment(Character character)
     {
-        character.Helmet = null;
+        character.Equip.Helmet = null;
     }
 
     protected override bool CheckEquipament(Character character)
     {
-        return character.Helmet != null;
+        return character.Equip.Helmet != null;
     }
 }
